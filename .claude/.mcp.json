@@ -84,6 +84,35 @@
       "env": {
         "_COMMENT": "Set POSTGRES_CONNECTION_STRING for custom database connections"
       }
+    },
+    "newman": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "--network",
+        "host",
+        "postman/newman"
+      ],
+      "env": {
+        "_COMMENT": "Basic Newman API testing - add your own volume mounts and collections as needed"
+      }
+    },
+    "puppeteer": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "--cap-add=SYS_ADMIN",
+        "--security-opt",
+        "seccomp=unconfined",
+        "mcp/puppeteer"
+      ],
+      "env": {
+        "_COMMENT": "Basic Puppeteer browser automation - add your own volume mounts and scripts as needed"
+      }
     }
   },
   "_configuration_notes": {
@@ -107,6 +136,14 @@
       "docker_networking": "Use host.docker.internal for localhost database connections from Docker",
       "default_connection": "postgresql://postgres:dev@host.docker.internal:5432/postgres",
       "test_setup": "docker run -d --name postgres-mcp-test -e POSTGRES_PASSWORD=dev -p 5432:5432 postgres:13"
+    },
+    "newman_api_testing": {
+      "usage": "docker run --rm postman/newman run <collection.json>",
+      "note": "Add volume mounts as needed for collections and results"
+    },
+    "puppeteer_browser_automation": {
+      "usage": "docker run --rm --cap-add=SYS_ADMIN mcp/puppeteer node <script.js>",
+      "note": "Add volume mounts as needed for scripts and outputs"
     }
   }
 }
