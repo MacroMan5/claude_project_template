@@ -49,6 +49,11 @@
             "type": "command",
             "command": ".claude/hooks/pre-tool-use/performance-check.sh \"${tool_name}\" \"${tool_input}\"",
             "timeout": 5000
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/pre-tool-use/pattern-enforcer.sh \"${tool_name}\" \"${tool_input}\"",
+            "timeout": 15000
           }
         ]
       }
@@ -92,6 +97,21 @@
             "type": "command",
             "command": ".claude/hooks/post-tool-use/git-auto-stage.sh \"${tool_input.file_path}\"",
             "timeout": 15000
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/post-tool-use/import-optimizer.sh \"${tool_input.file_path}\"",
+            "timeout": 30000
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/post-tool-use/smart-context-builder.sh \"${tool_input.file_path}\"",
+            "timeout": 45000
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/post-tool-use/dependency-impact-analyzer.sh \"${tool_input.file_path}\"",
+            "timeout": 60000
           }
         ]
       }

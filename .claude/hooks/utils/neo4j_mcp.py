@@ -290,26 +290,161 @@ class Neo4jMCPIntegrator:
         
         self.execute_mcp_call("mcp__memory__create_entities", {"entities": [activity_entity]})
 
+    def store_file_context(self, file_path: str, imports: str, exports: str):
+        """Store file context for smart context builder"""
+        try:
+            # Create knowledge cache directory
+            cache_dir = os.path.join(os.getcwd(), '.claude', 'knowledge')
+            os.makedirs(cache_dir, exist_ok=True)
+            
+            context_data = {
+                'file': file_path,
+                'imports': imports.split() if imports else [],
+                'exports': exports.split() if exports else [],
+                'timestamp': subprocess.run(['date', '+%Y-%m-%d %H:%M:%S'], capture_output=True, text=True).stdout.strip()
+            }
+            
+            cache_file = os.path.join(cache_dir, f"{file_path.replace('/', '_')}_context.json")
+            with open(cache_file, 'w') as f:
+                json.dump(context_data, f, indent=2)
+            
+            self.log(f"Stored context for {file_path}")
+            return True
+        except Exception as e:
+            self.log(f"Error storing context: {e}", "ERROR")
+            return False
+
+    def store_impact_analysis(self, file_path: str, impact_data: str):
+        """Store dependency impact analysis"""
+        try:
+            cache_dir = os.path.join(os.getcwd(), '.claude', 'knowledge') 
+            os.makedirs(cache_dir, exist_ok=True)
+            
+            cache_file = os.path.join(cache_dir, f"{file_path.replace('/', '_')}_impact.json")
+            with open(cache_file, 'w') as f:
+                f.write(impact_data)
+            
+            self.log(f"Stored impact analysis for {file_path}")
+            return True
+        except Exception as e:
+            self.log(f"Error storing impact analysis: {e}", "ERROR")
+            return False
+
+    def store_pattern_violations(self, file_path: str, pattern_data: str):
+        """Store pattern enforcement violations"""
+        try:
+            cache_dir = os.path.join(os.getcwd(), '.claude', 'knowledge')
+            os.makedirs(cache_dir, exist_ok=True)
+            
+            cache_file = os.path.join(cache_dir, f"{file_path.replace('/', '_')}_violations.json")
+            with open(cache_file, 'w') as f:
+                f.write(pattern_data)
+            
+            self.log(f"Stored pattern violations for {file_path}")
+            return True
+        except Exception as e:
+            self.log(f"Error storing pattern violations: {e}", "ERROR") 
+            return False
+
+    def store_optimization_metrics(self, file_path: str, metrics_data: str):
+        """Store import optimization metrics"""
+        try:
+            cache_dir = os.path.join(os.getcwd(), '.claude', 'knowledge')
+            os.makedirs(cache_dir, exist_ok=True)
+            
+            cache_file = os.path.join(cache_dir, f"{file_path.replace('/', '_')}_optimization.json")
+            with open(cache_file, 'w') as f:
+                f.write(metrics_data)
+            
+            self.log(f"Stored optimization metrics for {file_path}")
+            return True
+        except Exception as e:
+            self.log(f"Error storing optimization metrics: {e}", "ERROR")
+            return False
+
+    def get_context(self, file_path: str) -> Optional[str]:
+        """Retrieve smart context for a file"""
+        try:
+            cache_dir = os.path.join(os.getcwd(), '.claude', 'knowledge')
+            
+            context_parts = []
+            
+            # Get file context
+            context_file = os.path.join(cache_dir, f"{file_path.replace('/', '_')}_context.json")
+            if os.path.exists(context_file):
+                with open(context_file, 'r') as f:
+                    data = json.load(f)
+                    if data.get('imports'):
+                        context_parts.append(f"Imports: {', '.join(data['imports'])}")
+                    if data.get('exports'):
+                        context_parts.append(f"Exports: {', '.join(data['exports'])}")
+            
+            # Get recent impact analysis
+            impact_file = os.path.join(cache_dir, f"{file_path.replace('/', '_')}_impact.json")
+            if os.path.exists(impact_file):
+                with open(impact_file, 'r') as f:
+                    data = json.load(f)
+                    if data.get('count', 0) > 0:
+                        context_parts.append(f"Impact: {data['count']} dependent files")
+            
+            return '\n'.join(context_parts) if context_parts else None
+        except Exception as e:
+            self.log(f"Error getting context: {e}", "ERROR")
+            return None
+
 def main():
     """Main function for command-line usage"""
-    if len(sys.argv) < 3:
-        print("Usage: neo4j_mcp.py <action> <file_path> [content]")
+    if len(sys.argv) < 2:
+        print("Usage: neo4j_mcp.py <action> [args...]")
         sys.exit(1)
     
     action = sys.argv[1]
-    file_path = sys.argv[2]
-    content = sys.argv[3] if len(sys.argv) > 3 else None
-    
     integrator = Neo4jMCPIntegrator()
     
-    if action in ["create", "edit"]:
-        integrator.create_or_update_entity(file_path, action, content)
-        integrator.create_relationships(file_path, content)
-    elif action == "log_activity":
-        details = content or "File operation"
-        integrator.log_development_activity(action, file_path, details)
-    else:
-        integrator.log(f"Unknown action: {action}", "ERROR")
+    try:
+        if action in ["create", "edit"] and len(sys.argv) >= 3:
+            file_path = sys.argv[2]
+            content = sys.argv[3] if len(sys.argv) > 3 else None
+            integrator.create_or_update_entity(file_path, action, content)
+            integrator.create_relationships(file_path, content)
+        
+        elif action == "store_file_context" and len(sys.argv) >= 5:
+            file_path, imports, exports = sys.argv[2], sys.argv[3], sys.argv[4]
+            result = integrator.store_file_context(file_path, imports, exports)
+            print("success" if result else "failed")
+        
+        elif action == "store_impact_analysis" and len(sys.argv) >= 4:
+            file_path, impact_data = sys.argv[2], sys.argv[3]
+            result = integrator.store_impact_analysis(file_path, impact_data)
+            print("success" if result else "failed")
+        
+        elif action == "store_pattern_violations" and len(sys.argv) >= 4:
+            file_path, pattern_data = sys.argv[2], sys.argv[3]
+            result = integrator.store_pattern_violations(file_path, pattern_data)
+            print("success" if result else "failed")
+        
+        elif action == "store_optimization_metrics" and len(sys.argv) >= 4:
+            file_path, metrics_data = sys.argv[2], sys.argv[3]
+            result = integrator.store_optimization_metrics(file_path, metrics_data)
+            print("success" if result else "failed")
+        
+        elif action == "get_context" and len(sys.argv) >= 3:
+            file_path = sys.argv[2]
+            context = integrator.get_context(file_path)
+            print(context if context else "None")
+        
+        elif action == "log_activity" and len(sys.argv) >= 3:
+            file_path = sys.argv[2]
+            details = sys.argv[3] if len(sys.argv) > 3 else "File operation"
+            integrator.log_development_activity(action, file_path, details)
+        
+        else:
+            integrator.log(f"Unknown action or insufficient arguments: {action}", "ERROR")
+            print(f"Unknown action: {action}")
+    
+    except Exception as e:
+        integrator.log(f"Error executing command {action}: {e}", "ERROR")
+        print(f"Error: {e}")
 
 if __name__ == "__main__":
     main()
