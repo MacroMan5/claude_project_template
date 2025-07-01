@@ -40,6 +40,17 @@
             "timeout": 15000
           }
         ]
+      },
+      {
+        "matcher": "*",
+        "description": "Performance warnings for all operations",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/pre-tool-use/performance-check.sh \"${tool_name}\" \"${tool_input}\"",
+            "timeout": 5000
+          }
+        ]
       }
     ],
     "PostToolUse": [
@@ -66,9 +77,24 @@
             "type": "command",
             "command": ".claude/hooks/post-tool-use/sync-dependencies.sh \"${tool_input.file_path}\"",
             "timeout": 60000
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/post-tool-use/cleanup-imports.sh \"${tool_input.file_path}\"",
+            "timeout": 30000
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/post-tool-use/update-docs.sh \"${tool_input.file_path}\"",
+            "timeout": 30000
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/post-tool-use/git-auto-stage.sh \"${tool_input.file_path}\"",
+            "timeout": 15000
           }
         ]
-      },
+      }
     ],
     "Notification": [
       {
