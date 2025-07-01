@@ -1,0 +1,88 @@
+{
+  "mcpServers": {
+    "sequential-thinking": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "mcp/sequentialthinking"
+      ]
+    },
+    "memory": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-v",
+        "mcp_memory_data:/data",
+        "mcp/memory"
+      ]
+    },
+    "filesystem": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-v",
+        "${PWD}:/workspace:rw",
+        "-v",
+        "/tmp:/tmp:rw",
+        "mcp/filesystem",
+        "/workspace",
+        "/tmp"
+      ]
+    },
+    "github": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "mcp/github"
+      ],
+      "env": {
+        "_COMMENT": "Set GITHUB_PERSONAL_ACCESS_TOKEN in your system environment"
+      }
+    },
+    "neo4j-memory": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "--network",
+        "host",
+        "-v",
+        "${PROJECT_NAME:-$(basename ${PWD})}_neo4j_mcp_data:/data",
+        "-e",
+        "NEO4J_AUTH=none",
+        "mcp/neo4j-memory:latest",
+        "bolt://localhost:7687"
+      ],
+      "env": {
+        "_COMMENT": "Uses project directory name for volume, no authentication for local dev"
+      }
+    }
+  },
+  "_configuration_notes": {
+    "neo4j_persistence": "Each project gets its own Neo4j volume based on directory name",
+    "environment_variables": {
+      "GITHUB_PERSONAL_ACCESS_TOKEN": "Set in your shell profile (e.g., ~/.bashrc or ~/.zshrc)",
+      "PROJECT_NAME": "Optional - defaults to current directory name"
+    },
+    "docker_volumes": {
+      "mcp_memory_data": "Shared memory storage across all projects",
+      "[project]_neo4j_mcp_data": "Project-specific Neo4j knowledge graph"
+    },
+    "neo4j_setup": {
+      "authentication": "Disabled for local development (NEO4J_AUTH=none)",
+      "port": "7687 (default Neo4j bolt port)",
+      "persistence": "Data persists in Docker volume between Claude sessions"
+    }
+  }
+}

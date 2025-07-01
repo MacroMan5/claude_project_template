@@ -1,0 +1,158 @@
+{
+  "description": "Claude Code Hooks Configuration - Professional Development Template",
+  "version": "1.0.0",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "description": "Security validation before file modifications",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/pre-tool-use/security-check.sh \"${tool_input.file_path}\" \"${tool_input.content}\"",
+            "timeout": 10000
+          },
+          {
+            "type": "command", 
+            "command": ".claude/hooks/pre-tool-use/backup-file.sh \"${tool_input.file_path}\"",
+            "timeout": 5000
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "description": "Command validation before execution",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/pre-tool-use/bash-validate.sh \"${tool_input.command}\"",
+            "timeout": 5000
+          }
+        ]
+      },
+      {
+        "matcher": "MultiEdit",
+        "description": "Multi-file operation validation",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/pre-tool-use/multi-edit-check.sh \"${tool_input.file_path}\"",
+            "timeout": 15000
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "description": "Post-file modification processing",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/post-tool-use/format-code.sh \"${tool_input.file_path}\"",
+            "timeout": 30000
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/post-tool-use/run-tests.sh \"${tool_input.file_path}\"",
+            "timeout": 60000
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/post-tool-use/update-knowledge.sh \"${tool_input.file_path}\" \"edit\" \"${tool_result}\"",
+            "timeout": 15000
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/post-tool-use/check-todos.sh \"${tool_input.file_path}\"",
+            "timeout": 10000
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "description": "Post-command execution logging",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/post-tool-use/log-command.sh \"${tool_input.command}\" \"${tool_result}\"",
+            "timeout": 5000
+          }
+        ]
+      },
+      {
+        "matcher": "Read",
+        "description": "Track file access patterns",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/post-tool-use/track-access.sh \"${tool_input.file_path}\" \"read\"",
+            "timeout": 3000
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "*",
+        "description": "Universal notification logging",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/notification/log-notification.sh \"${notification_type}\" \"${message}\"",
+            "timeout": 5000
+          }
+        ]
+      },
+      {
+        "matcher": "error",
+        "description": "Error notification handling",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/notification/handle-error.sh \"${error_type}\" \"${error_message}\"",
+            "timeout": 10000
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "description": "Session cleanup and summarization",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/stop/cleanup-temp.sh",
+            "timeout": 10000
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/stop/session-summary.sh",
+            "timeout": 15000
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/stop/update-session-knowledge.sh",
+            "timeout": 20000
+          }
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "enable_logging": true,
+    "log_file": ".claude/hooks/logs/hooks.log",
+    "enable_knowledge_updates": true,
+    "neo4j_enabled": true,
+    "github_integration": true,
+    "max_concurrent_hooks": 2,
+    "default_timeout": 30000
+  },
+  "environment": {
+    "CLAUDE_HOOKS_DIR": ".claude/hooks",
+    "CLAUDE_LOGS_DIR": ".claude/hooks/logs",
+    "PROJECT_NAME": "${PROJECT_NAME:-$(basename $PWD)}",
+    "GITHUB_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+  }
+}

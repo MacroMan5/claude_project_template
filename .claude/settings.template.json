@@ -1,0 +1,37 @@
+{
+    "permissions": {
+        "allow": [
+            "Bash(*)",
+            "WebFetch(*)",
+            "sudo:/home/*",
+            "mcp__filesystem__*",
+            "mcp__sequential-thinking__*",
+            "mcp__memory__*",
+            "mcp__github__*",
+            "mcp__ide__*",
+            "mcp__neo4j__*",
+            "mcp__neo4j-memory__*"
+        ],
+        "deny": [
+            "Bash(sudo rm -rf /)",
+            "Bash(sudo rm -rf /*)",
+            "Bash(sudo shutdown*)",
+            "Bash(sudo reboot*)",
+            "Bash(sudo halt*)",
+            "sudo:/etc/passwd",
+            "sudo:/etc/shadow",
+            "sudo:/boot/*",
+            "sudo:/sys/*",
+            "sudo:/proc/*"
+        ]
+    },
+    "enableAllProjectMcpServers": true,
+    "enabledMcpjsonServers": [
+        "sequential-thinking",
+        "memory",
+        "filesystem",
+        "neo4j-memory",
+        "github",
+        "shared-memory"
+    ]
+}
