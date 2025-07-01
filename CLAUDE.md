@@ -1,308 +1,180 @@
-# 🤖 Claude Code Project Guide
+# 🤖 Claude Code Project Template
 
-This guide provides essential context and project-specific information for Claude Code.
+This template provides a complete Claude Code project setup with professional tooling, standardized workflows, and productivity features.
 
 ---
 
-## 🎯 Project Overview
+## 🎯 Template Overview
 
 **Project Name**: Claude Project Template  
 **Type**: Development Template & Starter Kit  
-**Tech Stack**: Multi-language template (Node.js, Python, Docker)  
-**Status**: Development Template
+**Purpose**: Bootstrap Claude Code projects with professional tooling
+**Status**: Production Ready
 
-### Purpose
-This is a comprehensive template for setting up Claude Code projects with:
-- Professional command suite
-- MCP server configurations  
-- Standardized project structure
-- Best practices and workflows
+### What This Template Provides
+- **Professional command suite** with 80+ predefined shortcuts
+- **MCP server configurations** for enhanced productivity
+- **Standardized project structure** following best practices
+- **Comprehensive documentation** templates and workflows
+- **Hooks system** for automated code quality and security
+- **Knowledge management** with Neo4j integration
 
 ---
 
-## 🏗️ Project Structure
+## 🏗️ Template Structure
 
 ```
 claude_project_template/
-├── .claude/
+├── CLAUDE.md              # This file - template documentation
+├── CLAUDE.local.md        # Universal standards & tool configurations
+├── commands.json          # Professional command suite (optional)
+├── .claude/              # Claude Code configuration (when created)
 │   ├── prompts/          # Professional prompt templates
-│   └── settings.local.json # Local Claude permissions
-├── commands.json         # Professional command suite
-├── CLAUDE.md            # This file - project documentation
-├── CLAUDE.local.md      # Local tools & personal preferences
-└── README.md            # Standard project README
+│   ├── hooks/            # Automated development assistance
+│   └── settings.local.json # Local permissions configuration
+└── README.md             # Standard project README (template)
 ```
 
 ---
 
-## 🛠️ Available Commands
+## 🚀 Getting Started
 
-### Development Workflows
-- **Feature Development**: `Ctrl+Shift+F` - SPARC methodology
-- **Testing Suite**: `Ctrl+Shift+U/I/P` - Unit/Integration/UI testing  
-- **Code Quality**: `Ctrl+Shift+Q` - Comprehensive quality checks
-
-### Application Commands
-- **Run Tests**: `Ctrl+Shift+T`
-- **Dev Server**: `Ctrl+Shift+R` 
-- **Build**: Docker build via `Ctrl+Shift+B`
-- **Lint/Format**: `Ctrl+Shift+L` / `Ctrl+Alt+F`
-
-### Specialized Operations  
-- **Architecture Design**: `Ctrl+Shift+A`
-- **Security Audit**: `Ctrl+Shift+S`
-- **CI/CD Setup**: `Ctrl+Shift+D`
-- **Git Workflows**: `Ctrl+Shift+G`
-
----
-
-## 📚 Project Guidelines
-
-### Code Standards
-- Follow language-specific best practices
-- Use provided prompt templates for consistency
-- Maintain comprehensive test coverage
-- Document architectural decisions
-
-### Git Workflow
-- Use feature branches for development
-- Follow conventional commit messages
-- Leverage GitHub MCP for PR management
-- Maintain clean commit history
-
-### Testing Strategy
-- TDD approach recommended
-- Multiple testing levels (unit/integration/UI)
-- Performance testing included
-- Security scanning integrated
-
----
-
-## � Customization
-
-This template is designed to be customized for specific projects:
-
-1. **Update commands.json** - Replace template commands with project-specific ones
-2. **Configure .claude/settings.local.json** - Adjust permissions for your needs  
-3. **Customize prompts** - Modify templates in `.claude/prompts/`
-4. **Update this file** - Document your specific project details
-
----
-
-## 📖 Additional Documentation
-
-- **Tool Configuration**: See `CLAUDE.local.md` for MCP setup and personal preferences
-- **Command Reference**: Full command details available in `commands.json`
-- **Prompt Templates**: Professional prompts in `.claude/prompts/`
-
-### 🔄 Sequential Thinking
-**When to use**: 
-- Complex planning (3+ steps)
-- Architecture decisions
-- Debugging complex issues
-- Breaking down large features
-
-**Example**:
-```
-Use mcp__sequential-thinking__sequentialthinking for:
-- Planning feature implementation
-- Analyzing system design
-- Troubleshooting multi-component issues
-```
-
-### 🧠 Neo4j Memory
-**When to use**:
-- Getting project context for new tasks 
-- Store project knowledge
-- Track component relationships
-- Remember user preferences
-- Persist discoveries across sessions
-- Every new feature or bug fix should update this memory
-
-**Example**:
-```
-Use mcp__neo4j-memory__* for:
-- Creating entities for new components
-- Updating relationships between modules
-- Querying existing project knowledge
-```
-
-### 🐙 GitHub MCP
-**When to use**:
-- Repository operations
-- Creating issues/PRs
-- Managing branches
-- Instead of git bash commands when possible
-- Automating workflows
-
-
-### 📁 Filesystem MCP
-**When to use**:
-- Bulk file operations
-- Complex directory operations
-- Advanced file searches
-- Managing project structure
-
----
-
-## 🚀 Professional Prompts
-
-Access professional-grade prompts for all development tasks:
-
-### Quick Access Commands
+### 1. Copy Template to Your Project
 ```bash
-# Development
-@.claude/prompts/development/feature-development.md
-@.claude/prompts/development/debugging.md
+# Copy core files to your project
+cp CLAUDE.md /path/to/your/project/
+cp CLAUDE.local.md /path/to/your/project/
+cp commands.json /path/to/your/project/ # Optional
+```
 
-# Testing
-@.claude/prompts/testing/unit-testing.md
-@.claude/prompts/testing/integration-testing.md
+### 2. Customize CLAUDE.md
+Update the copied CLAUDE.md with your project specifics:
+- Project name, type, and tech stack
+- Architecture details and structure
+- Current development priorities
+- Project-specific patterns and conventions
+- API routes, database models, component patterns
 
-# Architecture
-@.claude/prompts/architecture/system-design.md
-@.claude/prompts/architecture/api-design.md
+### 3. Configure CLAUDE.local.md
+The CLAUDE.local.md contains universal development standards and should work as-is, but you can customize:
+- Development preferences
+- Local environment variables
+- Project-specific MCP configurations
+- Personal workflow preferences
 
-# Security
-@.claude/prompts/security/security-audit.md
-@.claude/prompts/security/authentication.md
+### 4. Set Up Professional Tools (Optional)
+```bash
+# Install command suite
+# Commands will be available via Ctrl+Shift shortcuts
 
-# See all prompts in .claude/prompts/
+# Set up hooks system for automated assistance
+export GITHUB_PERSONAL_ACCESS_TOKEN="your_token"
+export PROJECT_NAME="your-project-name"
+# Restart Claude Code to activate
 ```
 
 ---
 
-## 📋 Development Standards
+## 🛠️ Template Features
 
-### Code Style
-- **Formatting**: Use automated formatters (Black, Prettier, etc.)
-- **Linting**: Zero tolerance for linting errors
-- **Type Safety**: Full type annotations required
-- **Documentation**: Docstrings for all public functions
+### Command Suite
+- **80+ professional commands** with keyboard shortcuts
+- **Development workflows** (SPARC methodology, TDD, code quality)
+- **Architecture tools** (system design, API design, security audits)
+- **Deployment automation** (CI/CD, Docker, monitoring)
 
-### Git Workflow
-- **Branch** : Use Main branch for production, develop for staging, and feature branches for development
-- **Branches naming**: feature/*, bugfix/*, hotfix/* # Add more as needed 
-- **Commits**: Use conventional commits (feat:, fix:, docs:, etc.)
-- **PRs**: Require reviews and passing CI, always test before trying to merge 
+### MCP Tool Integration
+- **Sequential Thinking** for complex planning
+- **Neo4j Memory** for project knowledge persistence
+- **GitHub MCP** for automated repository operations
+- **Filesystem MCP** for bulk file operations
 
-### Testing Requirements
-- **Coverage**: Minimum 80% code coverage
-- **Types**: Unit, integration, and E2E tests
-- **TDD**: Write tests first for new features
-- **CI**: All tests must pass before merging to develop or main branches
+### Automated Assistance (Hooks)
+- **Security validation** prevents dangerous patterns
+- **Code formatting** on every file save
+- **Test automation** runs related tests automatically
+- **Knowledge capture** updates project memory
+- **TODO management** creates GitHub issues
 
-### Security Practices
-- **Secrets**: Never commit sensitive data (Use secrets management tools, environment variables or .env files)
-- **Dependencies**: Regular security scans (dependabot, snyk, etc.)
-- **Input**: Validate all user inputs
-- **Auth**: Use secure authentication methods
+### Professional Prompts
+Access via `@.claude/prompts/[category]/[prompt].md`:
+- Development (feature development, debugging, refactoring)
+- Testing (unit, integration, UI testing)
+- Architecture (system design, API design, database)
+- Security (audits, authentication, compliance)
+- Deployment (CI/CD, Docker, Kubernetes)
 
 ---
 
-## 🏗️ Project Structure
+## ⚙️ Customization Guide
+
+### For Your Project
+1. **Update CLAUDE.md** with project-specific information
+2. **Configure tech stack** details and architecture
+3. **Set current priorities** and development focus
+4. **Document patterns** (API routes, models, components)
+5. **Add project commands** to commands.json if needed
+
+### Template Structure (Keep As-Is)
+- **CLAUDE.local.md** - Universal standards and tool configs
+- **Professional prompts** - Standardized development workflows
+- **Hooks system** - Automated development assistance
+- **MCP configurations** - Enhanced productivity tools
+
+---
+
+## 📋 Template Usage Examples
+
+### Typical Project Setup
+```bash
+# 1. Copy template
+cp /path/to/template/* /path/to/your/project/
+
+# 2. Update CLAUDE.md with your project details
+# 3. Set environment variables for hooks
+# 4. Restart Claude Code
+# 5. Start developing with professional tooling!
 ```
-project/
-├── .claude/           # Claude Code configuration
-│   └── prompts/       # Professional prompt library
-├── src/               # Source code
-├── tests/             # Test files
-├── docs/              # Documentation
-├── scripts/           # Utility scripts
-└── config/            # Configuration files
-Makefile               # Build and task automation or similar for your project 
-README.md              # Project overview and setup instructions
 
-```
+### For Different Project Types
 
----
+**Web Application**:
+- Update architecture section with frontend/backend details
+- Configure database and API patterns
+- Set up deployment workflows
 
-## ⚠️ Important Rules
+**Python Package**:
+- Document package structure and modules
+- Configure testing and packaging commands
+- Set up PyPI deployment workflows
 
-### DO:
-- ✅ Use MCP tools proactively
-- ✅ Follow existing code patterns
-- ✅ Write tests for new code
-- ✅ Update documentation
-- ✅ Check for security issues
-- ✅ Optimize for performance
-- ✅ Use type annotations
-
-### DON'T:
-- ❌ Commit sensitive data
-- ❌ Skip tests
-- ❌ Ignore linting errors
-- ❌ Use deprecated APIs
-- ❌ Hard-code configuration
-- ❌ Create files unless necessary
-- ❌ Make breaking changes without discussion
+**Node.js Service**:
+- Configure Express/FastAPI patterns
+- Set up Docker and monitoring
+- Document API endpoints and middleware
 
 ---
 
-## 🔧 Commands Reference
+## 🎯 Template Maintenance
 
-Access the full command suite via `commands.json`:
-- 80+ predefined commands
-- Keyboard shortcuts for common tasks
-- Integration with professional prompts
-- Automated workflows
+### Keeping Template Updated
+- **Professional prompts** are maintained as industry standards evolve
+- **Hook system** receives updates for new development tools
+- **MCP configurations** are enhanced with new integrations
+- **Command suite** expands with community feedback
 
----
-
-## 📝 Context Management
-
-### Session Start Checklist
-1. Check Neo4j memory for existing context
-2. Review recent changes in the codebase
-3. Understand current task requirements
-4. Plan approach using Sequential Thinking
-
-### During Development
-1. Update Neo4j memory with discoveries
-2. Use appropriate professional prompts
-3. Follow TDD practices
-4. Maintain code quality standards
-
-### Session End
-1. Update memory with progress
-2. Document any decisions made
-3. Create todos for next steps
-4. Ensure all tests pass
+### Contributing Improvements
+- Test new workflows across different project types
+- Submit enhanced prompts for specific domains
+- Share successful hook configurations
+- Document new MCP tool integrations
 
 ---
 
-## 🚨 Quick Reference
-
-### File Locations
-- **Source Code**: `src/` or `app/`
-- **Tests**: `tests/` or `spec/`
-- **Config**: `config/` or root directory
-- **Scripts**: `scripts/` or `tools/`
-- **Docs**: `docs/` or `documentation/`
-
-### Common Patterns
-- **API Routes**: [Your API pattern]
-- **Database Models**: [Your model pattern]
-- **Component Structure**: [Your component pattern]
-- **Test Structure**: [Your test pattern]
+**Template Version**: 2.0  
+**Last Updated**: 2025-01  
+**Compatible With**: Claude Code 2.0+
 
 ---
 
-## 🎯 Current Priorities
-
-1. [Priority 1]
-2. [Priority 2]
-3. [Priority 3]
-
----
-
-## 📚 Additional Resources
-
-- [Project Documentation](./docs/)
-- [API Reference](./docs/api/)
-- [Contributing Guide](./CONTRIBUTING.md)
-- [Architecture Decisions](./docs/architecture/)
-
----
-
-**Remember**: This is a living document. Update it as the project evolves!
+**Remember**: This template is designed to accelerate your development setup. Customize CLAUDE.md for your project, but keep CLAUDE.local.md as your universal standards reference!
