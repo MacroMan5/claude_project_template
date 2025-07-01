@@ -1,0 +1,444 @@
+{
+    "name": "Professional Claude Code Commands Suite",
+    "description": "Comprehensive command set for professional development workflows with Claude Code prompts",
+    "version": "5.0.0",
+    "commands": [
+        {
+            "name": "🚀 Feature Development (SPARC)",
+            "command": "@.claude/prompts/development/feature-development.md",
+            "description": "Implement new feature using SPARC methodology",
+            "category": "development",
+            "shortcut": "Ctrl+Shift+F",
+            "mcp": [
+                "filesystem",
+                "sequential-thinking"
+            ]
+        },
+        {
+            "name": "🧪 TDD Unit Testing",
+            "command": "@.claude/prompts/testing/unit-testing.md",
+            "description": "Create unit tests following TDD principles",
+            "category": "testing",
+            "shortcut": "Ctrl+Shift+U",
+            "mcp": [
+                "filesystem"
+            ]
+        },
+        {
+            "name": "🔗 Integration Testing",
+            "command": "@.claude/prompts/testing/integration-testing.md",
+            "description": "Write comprehensive integration tests",
+            "category": "testing",
+            "shortcut": "Ctrl+Shift+I",
+            "mcp": [
+                "filesystem"
+            ]
+        },
+        {
+            "name": "🖥️ UI Testing (Puppeteer)",
+            "command": "@.claude/prompts/testing/ui-testing.md",
+            "description": "Create UI tests with Puppeteer MCP",
+            "category": "testing",
+            "shortcut": "Ctrl+Shift+P",
+            "mcp": [
+                "filesystem",
+                "puppeteer"
+            ]
+        },
+        {
+            "name": "🏗️ System Architecture Design",
+            "command": "@.claude/prompts/architecture/system-design.md",
+            "description": "Design scalable system architecture",
+            "category": "architecture",
+            "shortcut": "Ctrl+Shift+A",
+            "mcp": [
+                "filesystem",
+                "sequential-thinking",
+                "neo4j-memory"
+            ]
+        },
+        {
+            "name": "🔒 Security Audit",
+            "command": "@.claude/prompts/security/security-audit.md",
+            "description": "Comprehensive security vulnerability assessment",
+            "category": "security",
+            "shortcut": "Ctrl+Shift+S",
+            "mcp": [
+                "filesystem",
+                "sequential-thinking"
+            ]
+        },
+        {
+            "name": "🚀 CI/CD Pipeline Setup",
+            "command": "@.claude/prompts/deployment/ci-cd-pipeline.md",
+            "description": "Configure comprehensive CI/CD pipeline",
+            "category": "deployment",
+            "shortcut": "Ctrl+Shift+D",
+            "mcp": [
+                "filesystem",
+                "github"
+            ]
+        },
+        {
+            "name": "🌳 Git Workflow Automation",
+            "command": "@.claude/prompts/workflow/git-workflow.md",
+            "description": "Automate Git operations and best practices",
+            "category": "workflow",
+            "shortcut": "Ctrl+Shift+G",
+            "mcp": [
+                "filesystem",
+                "github"
+            ]
+        },
+        {
+            "name": "✨ Code Quality Check",
+            "command": "@.claude/prompts/workflow/code-quality.md",
+            "description": "Comprehensive code quality automation",
+            "category": "quality",
+            "shortcut": "Ctrl+Shift+Q",
+            "mcp": [
+                "filesystem",
+                "sequential-thinking"
+            ]
+        },
+        {
+            "name": "📝 API Documentation",
+            "command": "@.claude/prompts/documentation/api-docs.md",
+            "description": "Generate comprehensive API documentation",
+            "category": "documentation",
+            "mcp": [
+                "filesystem"
+            ]
+        },
+        {
+            "name": "🧪 Run Tests",
+            "command": "npm test",
+            "description": "Run test suite",
+            "category": "testing",
+            "shortcut": "Ctrl+Shift+T"
+        },
+        {
+            "name": "🚀 Start Development Server",
+            "command": "npm run dev",
+            "description": "Launch development environment",
+            "category": "app",
+            "shortcut": "Ctrl+Shift+R"
+        },
+        {
+            "name": "🏗️ Build Project",
+            "command": "npm run build",
+            "description": "Build for production",
+            "category": "app"
+        },
+        {
+            "name": "🔍 Lint Code",
+            "command": "npm run lint",
+            "description": "Run linting checks",
+            "category": "quality",
+            "shortcut": "Ctrl+Shift+L"
+        },
+        {
+            "name": "🎨 Format Code",
+            "command": "npm run format || prettier --write .",
+            "description": "Auto-format code",
+            "category": "quality",
+            "shortcut": "Ctrl+Alt+F"
+        },
+        {
+            "name": "🧠 MCP: Complex Problem Solving",
+            "command": "echo 'Activate sequential-thinking MCP for complex analysis'",
+            "description": "Use MCP for multi-step reasoning",
+            "category": "mcp",
+            "mcp": [
+                "sequential-thinking"
+            ]
+        },
+        {
+            "name": "💾 MCP: Store Project Knowledge",
+            "command": "echo 'Use memory MCP to persist project insights'",
+            "description": "Save important project information",
+            "category": "mcp",
+            "mcp": [
+                "memory",
+                "neo4j-memory"
+            ]
+        },
+        {
+            "name": "🐙 MCP: GitHub Operations",
+            "command": "echo 'Use GitHub MCP for repository management'",
+            "description": "Manage issues, PRs, and branches via MCP",
+            "category": "mcp",
+            "mcp": [
+                "github"
+            ]
+        },
+        {
+            "name": "📁 MCP: Advanced File Operations",
+            "command": "echo 'Use filesystem MCP for bulk file processing'",
+            "description": "Complex file operations via MCP",
+            "category": "mcp",
+            "mcp": [
+                "filesystem"
+            ]
+        },
+        {
+            "name": "🏗️ Create Feature Branch",
+            "command": "git checkout -b feature/$1",
+            "description": "Create new feature branch",
+            "category": "git"
+        },
+        {
+            "name": "📊 Git Statistics",
+            "command": "git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short",
+            "description": "Visual git history",
+            "category": "git"
+        },
+        {
+            "name": "🔍 Search Git History",
+            "command": "git log -S \"$1\" --oneline",
+            "description": "Search for code changes in history",
+            "category": "git",
+            "mcp": [
+                "github"
+            ]
+        },
+        {
+            "name": "📊 Generate Coverage Report",
+            "command": "npm run test:coverage || jest --coverage",
+            "description": "Generate test coverage report",
+            "category": "reports"
+        },
+        {
+            "name": "🏥 Health Check",
+            "command": "curl -f http://localhost:3000/health || echo 'Health check failed'",
+            "description": "Check application health",
+            "category": "monitoring"
+        },
+        {
+            "name": "🧹 Clean Build Artifacts",
+            "command": "rm -rf node_modules/.cache dist build .next out coverage",
+            "description": "Remove generated files and caches",
+            "category": "cleanup"
+        },
+        {
+            "name": "🐳 Docker Build",
+            "command": "docker build -t ${PWD##*/}:latest .",
+            "description": "Build Docker image for current project",
+            "category": "docker",
+            "shortcut": "Ctrl+Shift+B"
+        },
+        {
+            "name": "🐳 Docker Compose Up",
+            "command": "docker-compose up -d",
+            "description": "Start all services with Docker Compose",
+            "category": "docker"
+        },
+        {
+            "name": "🐳 Docker Compose Down",
+            "command": "docker-compose down",
+            "description": "Stop all Docker Compose services",
+            "category": "docker"
+        },
+        {
+            "name": "🐳 Docker Logs",
+            "command": "docker-compose logs -f",
+            "description": "Follow Docker container logs",
+            "category": "docker"
+        },
+        {
+            "name": "🗄️ Neo4j Start",
+            "command": "docker run --name neo4j -p7474:7474 -p7687:7687 -d -v neo4j_data:/data -v neo4j_logs:/logs -e NEO4J_AUTH=neo4j/password neo4j:latest",
+            "description": "Start Neo4j database container",
+            "category": "database",
+            "mcp": [
+                "neo4j-memory"
+            ]
+        },
+        {
+            "name": "🗄️ Neo4j Stop",
+            "command": "docker stop neo4j && docker rm neo4j",
+            "description": "Stop and remove Neo4j container",
+            "category": "database"
+        },
+        {
+            "name": "🗄️ Database Backup",
+            "command": "pg_dump -h localhost -U postgres -d ${DB_NAME:-mydb} > backup_$(date +%Y%m%d_%H%M%S).sql",
+            "description": "Create database backup",
+            "category": "database"
+        },
+        {
+            "name": "🗄️ Database Restore",
+            "command": "psql -h localhost -U postgres -d ${DB_NAME:-mydb} < $1",
+            "description": "Restore database from backup",
+            "category": "database"
+        },
+        {
+            "name": "🔄 Database Migrate",
+            "command": "alembic upgrade head",
+            "description": "Run database migrations",
+            "category": "database"
+        },
+        {
+            "name": "📊 Performance Test",
+            "command": "npx lighthouse https://localhost:3000 --output=json --output-path=./lighthouse-report.json",
+            "description": "Run Lighthouse performance audit",
+            "category": "performance"
+        },
+        {
+            "name": "📊 Load Test",
+            "command": "npx autocannon -c 10 -d 30 https://localhost:3000",
+            "description": "Run load test with autocannon",
+            "category": "performance"
+        },
+        {
+            "name": "🔐 Generate SSL Cert",
+            "command": "openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes",
+            "description": "Generate self-signed SSL certificate",
+            "category": "security"
+        },
+        {
+            "name": "🔐 Security Scan",
+            "command": "npm audit --audit-level=moderate",
+            "description": "Scan for security vulnerabilities",
+            "category": "security"
+        },
+        {
+            "name": "🌍 Environment Setup",
+            "command": "cp .env.example .env && npm install",
+            "description": "Set up development environment",
+            "category": "setup"
+        },
+        {
+            "name": "🌍 Environment Switch",
+            "command": "export NODE_ENV=$1 && echo 'Environment set to $1'",
+            "description": "Switch between environments",
+            "category": "setup"
+        },
+        {
+            "name": "📦 Package Update",
+            "command": "npm update && npm audit fix",
+            "description": "Update packages and fix vulnerabilities",
+            "category": "maintenance"
+        },
+        {
+            "name": "📦 Package Outdated",
+            "command": "npm outdated",
+            "description": "Check for outdated packages",
+            "category": "maintenance"
+        },
+        {
+            "name": "🔍 Code Search",
+            "command": "rg -n --type-add 'web:*.{html,js,ts,jsx,tsx,vue,svelte}' --type web '$1'",
+            "description": "Search code with ripgrep",
+            "category": "search"
+        },
+        {
+            "name": "🔍 Find Large Files",
+            "command": "find . -type f -size +10M -not -path './node_modules/*' -not -path './.git/*' | head -20",
+            "description": "Find large files in project",
+            "category": "search"
+        },
+        {
+            "name": "💾 MCP: Neo4j Knowledge Graph",
+            "command": "echo 'Use Neo4j MCP to build knowledge graphs from codebase'",
+            "description": "Create knowledge graph from project structure",
+            "category": "mcp",
+            "mcp": [
+                "neo4j-memory",
+                "filesystem"
+            ]
+        },
+        {
+            "name": "💾 MCP: Project Analytics",
+            "command": "echo 'Use MCP to analyze project metrics and patterns'",
+            "description": "Analyze project with MCP tools",
+            "category": "mcp",
+            "mcp": [
+                "sequential-thinking",
+                "memory",
+                "filesystem"
+            ]
+        }
+    ],
+    "shortcuts": {
+        "Ctrl+Shift+F": "🚀 Feature Development (SPARC)",
+        "Ctrl+Shift+U": "🧪 TDD Unit Testing",
+        "Ctrl+Shift+I": "🔗 Integration Testing",
+        "Ctrl+Shift+P": "🖥️ UI Testing (Puppeteer)",
+        "Ctrl+Shift+A": "🏗️ System Architecture Design",
+        "Ctrl+Shift+S": "🔒 Security Audit",
+        "Ctrl+Shift+D": "🚀 CI/CD Pipeline Setup",
+        "Ctrl+Shift+G": "🌳 Git Workflow Automation",
+        "Ctrl+Shift+Q": "✨ Code Quality Check",
+        "Ctrl+Shift+T": "🧪 Run Tests",
+        "Ctrl+Shift+R": "🚀 Start Development Server",
+        "Ctrl+Shift+L": "🔍 Lint Code",
+        "Ctrl+Alt+F": "🎨 Format Code",
+        "Ctrl+Shift+B": "🐳 Docker Build"
+    },
+    "categories": {
+        "development": "💻 Development",
+        "testing": "🧪 Testing",
+        "architecture": "🏗️ Architecture",
+        "security": "🔒 Security",
+        "deployment": "🚀 Deployment",
+        "documentation": "📝 Documentation",
+        "workflow": "🔄 Workflow",
+        "app": "🚀 Application",
+        "quality": "✨ Code Quality",
+        "mcp": "🤖 MCP Operations",
+        "git": "🐙 Git",
+        "reports": "📊 Reports",
+        "monitoring": "📊 Monitoring",
+        "cleanup": "🧹 Cleanup",
+        "docker": "🐳 Docker",
+        "database": "🗄️ Database",
+        "performance": "📊 Performance",
+        "setup": "🌍 Environment",
+        "maintenance": "📦 Maintenance",
+        "search": "🔍 Search"
+    },
+    "mcp_usage_guide": {
+        "filesystem": "File operations, code analysis, bulk processing, automated fixes",
+        "sequential-thinking": "Complex problem solving, debugging, architecture decisions, multi-step planning",
+        "memory": "Persist project knowledge, user preferences, decisions, patterns",
+        "github": "Repository management, issues, PRs, code review, automated commits",
+        "neo4j-memory": "Knowledge graph operations, relationship mapping, component dependencies",
+        "puppeteer": "UI testing, browser automation, visual regression testing"
+    },
+    "workflow_patterns": {
+        "feature_development": [
+            "🏗️ System Architecture Design",
+            "🚀 Feature Development (SPARC)",
+            "🧪 TDD Unit Testing",
+            "🔗 Integration Testing",
+            "🔒 Security Audit"
+        ],
+        "quality_assurance": [
+            "🔍 Lint Code",
+            "🎨 Format Code",
+            "✨ Code Quality Check",
+            "🧪 Run Tests",
+            "📊 Generate Coverage Report"
+        ],
+        "deployment_pipeline": [
+            "🧪 Run Tests",
+            "🔒 Security Audit",
+            "🏗️ Build Project",
+            "🚀 CI/CD Pipeline Setup"
+        ]
+    },
+    "customization_guide": {
+        "add_commands": "Add project-specific commands to the commands array",
+        "update_shortcuts": "Modify keyboard shortcuts to match your preferences",
+        "extend_categories": "Add new categories for your project's needs",
+        "configure_mcp": "Update MCP configurations in .mcp.json",
+        "replace_placeholders": "Replace [YOUR_*_COMMAND] with actual commands"
+    },
+    "notes": {
+        "prompts": "Professional prompts available in .claude/prompts/",
+        "mcp": "MCP servers provide enhanced capabilities - use them proactively!",
+        "shortcuts": "Keyboard shortcuts work in Claude Code interface",
+        "customization": "This is a template - customize for your project needs"
+    }
+}

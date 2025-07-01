@@ -1,0 +1,243 @@
+# .claudeignore - Claude Code Token Optimization
+# This file tells Claude Code which files/folders to ignore for better performance
+
+# =============================================================================
+# TEMPORARY FILES AND BUILD ARTIFACTS
+# =============================================================================
+
+# Test coverage reports (large HTML files)
+htmlcov/
+coverage_html/
+coverage/
+.coverage
+*.coverage
+coverage.xml
+*.lcov
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+
+# Virtual environments
+venv/
+env/
+.env
+.venv/
+ENV/
+env.bak/
+venv.bak/
+virtualenv/
+
+# Node modules
+node_modules/
+.pnp/
+.pnp.js
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.manifest
+*.spec
+
+# =============================================================================
+# IDE AND EDITOR FILES
+# =============================================================================
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# IntelliJ/PyCharm
+.idea/
+*.iml
+*.iws
+out/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.*.sw?
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# =============================================================================
+# LOGS AND TEMPORARY DATA
+# =============================================================================
+
+# Log files
+*.log
+logs/
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.pid
+*.seed
+*.pid.lock
+
+# =============================================================================
+# SENSITIVE DATA
+# =============================================================================
+
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Secret files
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+secrets/
+.secrets/
+credentials/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# =============================================================================
+# LARGE BINARY FILES
+# =============================================================================
+
+# Images (if not needed for development)
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.ico
+*.svg
+*.webp
+
+# Videos and audio
+*.mp4
+*.avi
+*.mov
+*.mp3
+*.wav
+
+# Archives
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+
+# =============================================================================
+# DOCUMENTATION BUILD OUTPUTS
+# =============================================================================
+
+# Sphinx documentation
+docs/_build/
+docs/_static/
+docs/_templates/
+site/
+
+# MkDocs
+site/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# =============================================================================
+# DEPENDENCY AND LOCK FILES (keep for reference but ignore large ones)
+# =============================================================================
+
+# Keep these for reference
+# !package.json
+# !package-lock.json
+# !yarn.lock
+# !requirements.txt
+# !Pipfile
+# !Pipfile.lock
+# !poetry.lock
+# !pyproject.toml
+
+# =============================================================================
+# CI/CD ARTIFACTS
+# =============================================================================
+
+# GitHub Actions
+.github/workflows/artifacts/
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Terraform
+*.tfstate
+*.tfstate.backup
+.terraform/
+
+# =============================================================================
+# PROJECT-SPECIFIC IGNORES
+# =============================================================================
+
+# Add your project-specific ignore patterns here
+# Example:
+# data/large_datasets/
+# models/pretrained/
+# cache/
+
+# =============================================================================
+# PERFORMANCE OPTIMIZATION NOTES
+# =============================================================================
+
+# This file optimizes Claude Code's context window by:
+# 1. Reducing tokens spent on non-essential files
+# 2. Focusing on source code and documentation
+# 3. Excluding generated and temporary files
+# 4. Improving response times and accuracy
+
+# To verify what Claude Code will read:
+# Use `git ls-files` to see tracked files
+# Check which files would be included/excluded
