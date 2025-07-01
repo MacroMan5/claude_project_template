@@ -59,38 +59,16 @@
           },
           {
             "type": "command",
-            "command": ".claude/hooks/post-tool-use/update-knowledge.sh \"${tool_input.file_path}\" \"edit\" \"${tool_result}\"",
-            "timeout": 15000
+            "command": ".claude/hooks/post-tool-use/lint-code.sh \"${tool_input.file_path}\"",
+            "timeout": 30000
           },
           {
             "type": "command",
-            "command": ".claude/hooks/post-tool-use/check-todos.sh \"${tool_input.file_path}\"",
-            "timeout": 10000
+            "command": ".claude/hooks/post-tool-use/sync-dependencies.sh \"${tool_input.file_path}\"",
+            "timeout": 60000
           }
         ]
       },
-      {
-        "matcher": "Bash",
-        "description": "Post-command execution logging",
-        "hooks": [
-          {
-            "type": "command",
-            "command": ".claude/hooks/post-tool-use/log-command.sh \"${tool_input.command}\" \"${tool_result}\"",
-            "timeout": 5000
-          }
-        ]
-      },
-      {
-        "matcher": "Read",
-        "description": "Track file access patterns",
-        "hooks": [
-          {
-            "type": "command",
-            "command": ".claude/hooks/post-tool-use/track-access.sh \"${tool_input.file_path}\" \"read\"",
-            "timeout": 3000
-          }
-        ]
-      }
     ],
     "Notification": [
       {
@@ -125,11 +103,6 @@
             "type": "command",
             "command": ".claude/hooks/stop/cleanup-temp.sh",
             "timeout": 10000
-          },
-          {
-            "type": "command",
-            "command": ".claude/hooks/stop/session-summary.sh",
-            "timeout": 15000
           },
           {
             "type": "command",

@@ -145,43 +145,6 @@
             "shortcut": "Ctrl+Alt+F"
         },
         {
-            "name": "🧠 MCP: Complex Problem Solving",
-            "command": "echo 'Activate sequential-thinking MCP for complex analysis'",
-            "description": "Use MCP for multi-step reasoning",
-            "category": "mcp",
-            "mcp": [
-                "sequential-thinking"
-            ]
-        },
-        {
-            "name": "💾 MCP: Store Project Knowledge",
-            "command": "echo 'Use memory MCP to persist project insights'",
-            "description": "Save important project information",
-            "category": "mcp",
-            "mcp": [
-                "memory",
-                "neo4j-memory"
-            ]
-        },
-        {
-            "name": "🐙 MCP: GitHub Operations",
-            "command": "echo 'Use GitHub MCP for repository management'",
-            "description": "Manage issues, PRs, and branches via MCP",
-            "category": "mcp",
-            "mcp": [
-                "github"
-            ]
-        },
-        {
-            "name": "📁 MCP: Advanced File Operations",
-            "command": "echo 'Use filesystem MCP for bulk file processing'",
-            "description": "Complex file operations via MCP",
-            "category": "mcp",
-            "mcp": [
-                "filesystem"
-            ]
-        },
-        {
             "name": "🏗️ Create Feature Branch",
             "command": "git checkout -b feature/$1",
             "description": "Create new feature branch",
@@ -246,57 +209,6 @@
             "category": "docker"
         },
         {
-            "name": "🗄️ Neo4j Start",
-            "command": "docker run --name neo4j -p7474:7474 -p7687:7687 -d -v neo4j_data:/data -v neo4j_logs:/logs -e NEO4J_AUTH=neo4j/password neo4j:latest",
-            "description": "Start Neo4j database container",
-            "category": "database",
-            "mcp": [
-                "neo4j-memory"
-            ]
-        },
-        {
-            "name": "🗄️ Neo4j Stop",
-            "command": "docker stop neo4j && docker rm neo4j",
-            "description": "Stop and remove Neo4j container",
-            "category": "database"
-        },
-        {
-            "name": "🗄️ Database Backup",
-            "command": "pg_dump -h localhost -U postgres -d ${DB_NAME:-mydb} > backup_$(date +%Y%m%d_%H%M%S).sql",
-            "description": "Create database backup",
-            "category": "database"
-        },
-        {
-            "name": "🗄️ Database Restore",
-            "command": "psql -h localhost -U postgres -d ${DB_NAME:-mydb} < $1",
-            "description": "Restore database from backup",
-            "category": "database"
-        },
-        {
-            "name": "🔄 Database Migrate",
-            "command": "alembic upgrade head",
-            "description": "Run database migrations",
-            "category": "database"
-        },
-        {
-            "name": "📊 Performance Test",
-            "command": "npx lighthouse https://localhost:3000 --output=json --output-path=./lighthouse-report.json",
-            "description": "Run Lighthouse performance audit",
-            "category": "performance"
-        },
-        {
-            "name": "📊 Load Test",
-            "command": "npx autocannon -c 10 -d 30 https://localhost:3000",
-            "description": "Run load test with autocannon",
-            "category": "performance"
-        },
-        {
-            "name": "🔐 Generate SSL Cert",
-            "command": "openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes",
-            "description": "Generate self-signed SSL certificate",
-            "category": "security"
-        },
-        {
             "name": "🔐 Security Scan",
             "command": "npm audit --audit-level=moderate",
             "description": "Scan for security vulnerabilities",
@@ -338,27 +250,6 @@
             "description": "Find large files in project",
             "category": "search"
         },
-        {
-            "name": "💾 MCP: Neo4j Knowledge Graph",
-            "command": "echo 'Use Neo4j MCP to build knowledge graphs from codebase'",
-            "description": "Create knowledge graph from project structure",
-            "category": "mcp",
-            "mcp": [
-                "neo4j-memory",
-                "filesystem"
-            ]
-        },
-        {
-            "name": "💾 MCP: Project Analytics",
-            "command": "echo 'Use MCP to analyze project metrics and patterns'",
-            "description": "Analyze project with MCP tools",
-            "category": "mcp",
-            "mcp": [
-                "sequential-thinking",
-                "memory",
-                "filesystem"
-            ]
-        }
     ],
     "shortcuts": {
         "Ctrl+Shift+F": "🚀 Feature Development (SPARC)",

@@ -74,6 +74,22 @@ case "$LANGUAGE" in
                 ISSUES_FOUND=true
             fi
         fi
+        
+        # Vue.js specific linting
+        if [[ "$FILE_PATH" == *.vue ]] && command_exists "eslint"; then
+            log_info "Running ESLint with Vue plugin on $FILE_PATH"
+            if ! eslint --ext .vue "$FILE_PATH" 2>/dev/null; then
+                ISSUES_FOUND=true
+            fi
+        fi
+        
+        # React/JSX specific linting  
+        if [[ "$FILE_PATH" == *.jsx ]] && command_exists "eslint"; then
+            log_info "Running ESLint with React plugin on $FILE_PATH"
+            if ! eslint --ext .jsx "$FILE_PATH" 2>/dev/null; then
+                ISSUES_FOUND=true
+            fi
+        fi
         ;;
         
     "go")
@@ -255,6 +271,36 @@ case "$(get_file_extension "$FILE_PATH")" in
         if command_exists "hadolint"; then
             log_info "Running Hadolint on $FILE_PATH"
             if ! hadolint "$FILE_PATH" 2>/dev/null; then
+                ISSUES_FOUND=true
+            fi
+        fi
+        ;;
+        
+    "css"|"scss"|"sass"|"less")
+        # CSS/SCSS linting with Stylelint
+        if command_exists "stylelint"; then
+            log_info "Running Stylelint on $FILE_PATH"
+            if ! stylelint "$FILE_PATH" 2>/dev/null; then
+                ISSUES_FOUND=true
+            fi
+            LINT_APPLIED=true
+        fi
+        ;;
+        
+    "html")
+        # HTML linting
+        if command_exists "htmlhint"; then
+            log_info "Running HTMLHint on $FILE_PATH"
+            if ! htmlhint "$FILE_PATH" 2>/dev/null; then
+                ISSUES_FOUND=true
+            fi
+            LINT_APPLIED=true
+        fi
+        
+        # Alternative HTML validation with tidy
+        if command_exists "tidy"; then
+            log_info "Running HTML Tidy on $FILE_PATH"
+            if ! tidy -errors -quiet "$FILE_PATH" 2>/dev/null; then
                 ISSUES_FOUND=true
             fi
         fi
