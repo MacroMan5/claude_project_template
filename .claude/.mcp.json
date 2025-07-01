@@ -67,13 +67,31 @@
       "env": {
         "_COMMENT": "Uses project directory name for volume, no authentication for local dev"
       }
+    },
+    "postgres": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "--network",
+        "host",
+        "-e",
+        "POSTGRES_CONNECTION_STRING",
+        "mcp/postgres",
+        "${POSTGRES_CONNECTION_STRING:-postgresql://postgres:dev@host.docker.internal:5432/postgres}"
+      ],
+      "env": {
+        "_COMMENT": "Set POSTGRES_CONNECTION_STRING for custom database connections"
+      }
     }
   },
   "_configuration_notes": {
     "neo4j_persistence": "Each project gets its own Neo4j volume based on directory name",
     "environment_variables": {
       "GITHUB_PERSONAL_ACCESS_TOKEN": "Set in your shell profile (e.g., ~/.bashrc or ~/.zshrc)",
-      "PROJECT_NAME": "Optional - defaults to current directory name"
+      "PROJECT_NAME": "Optional - defaults to current directory name",
+      "POSTGRES_CONNECTION_STRING": "PostgreSQL connection string (e.g., postgresql://user:pass@host:5432/dbname)"
     },
     "docker_volumes": {
       "mcp_memory_data": "Shared memory storage across all projects",
@@ -83,6 +101,12 @@
       "authentication": "Disabled for local development (NEO4J_AUTH=none)",
       "port": "7687 (default Neo4j bolt port)",
       "persistence": "Data persists in Docker volume between Claude sessions"
+    },
+    "postgres_setup": {
+      "connection": "Uses POSTGRES_CONNECTION_STRING environment variable",
+      "docker_networking": "Use host.docker.internal for localhost database connections from Docker",
+      "default_connection": "postgresql://postgres:dev@host.docker.internal:5432/postgres",
+      "test_setup": "docker run -d --name postgres-mcp-test -e POSTGRES_PASSWORD=dev -p 5432:5432 postgres:13"
     }
   }
 }
