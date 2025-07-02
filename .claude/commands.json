@@ -1,7 +1,7 @@
 {
     "name": "Professional Claude Code Commands Suite",
-    "description": "Comprehensive command set for professional development workflows with Claude Code prompts",
-    "version": "5.0.0",
+    "description": "Essential command set for professional development workflows with Claude Code",
+    "version": "6.0.0",
     "commands": [
         {
             "name": "🚀 Feature Development (SPARC)",
@@ -35,14 +35,12 @@
             ]
         },
         {
-            "name": "🖥️ UI Testing (Puppeteer)",
+            "name": "🖥️ UI Testing",
             "command": "@.claude/prompts/testing/ui-testing.md",
-            "description": "Create UI tests with Puppeteer MCP",
+            "description": "Create UI tests with automated testing tools",
             "category": "testing",
-            "shortcut": "Ctrl+Shift+P",
             "mcp": [
-                "filesystem",
-                "puppeteer"
+                "filesystem"
             ]
         },
         {
@@ -53,8 +51,7 @@
             "shortcut": "Ctrl+Shift+A",
             "mcp": [
                 "filesystem",
-                "sequential-thinking",
-                "neo4j-memory"
+                "sequential-thinking"
             ]
         },
         {
@@ -69,28 +66,6 @@
             ]
         },
         {
-            "name": "🚀 CI/CD Pipeline Setup",
-            "command": "@.claude/prompts/deployment/ci-cd-pipeline.md",
-            "description": "Configure comprehensive CI/CD pipeline",
-            "category": "deployment",
-            "shortcut": "Ctrl+Shift+D",
-            "mcp": [
-                "filesystem",
-                "github"
-            ]
-        },
-        {
-            "name": "🌳 Git Workflow Automation",
-            "command": "@.claude/prompts/workflow/git-workflow.md",
-            "description": "Automate Git operations and best practices",
-            "category": "workflow",
-            "shortcut": "Ctrl+Shift+G",
-            "mcp": [
-                "filesystem",
-                "github"
-            ]
-        },
-        {
             "name": "✨ Code Quality Check",
             "command": "@.claude/prompts/workflow/code-quality.md",
             "description": "Comprehensive code quality automation",
@@ -99,15 +74,6 @@
             "mcp": [
                 "filesystem",
                 "sequential-thinking"
-            ]
-        },
-        {
-            "name": "📝 API Documentation",
-            "command": "@.claude/prompts/documentation/api-docs.md",
-            "description": "Generate comprehensive API documentation",
-            "category": "documentation",
-            "mcp": [
-                "filesystem"
             ]
         },
         {
@@ -160,22 +126,13 @@
             "name": "🔍 Search Git History",
             "command": "git log -S \"$1\" --oneline",
             "description": "Search for code changes in history",
-            "category": "git",
-            "mcp": [
-                "github"
-            ]
+            "category": "git"
         },
         {
             "name": "📊 Generate Coverage Report",
             "command": "npm run test:coverage || jest --coverage",
             "description": "Generate test coverage report",
             "category": "reports"
-        },
-        {
-            "name": "🏥 Health Check",
-            "command": "curl -f http://localhost:3000/health || echo 'Health check failed'",
-            "description": "Check application health",
-            "category": "monitoring"
         },
         {
             "name": "🧹 Clean Build Artifacts",
@@ -203,12 +160,6 @@
             "category": "docker"
         },
         {
-            "name": "🐳 Docker Logs",
-            "command": "docker-compose logs -f",
-            "description": "Follow Docker container logs",
-            "category": "docker"
-        },
-        {
             "name": "🔐 Security Scan",
             "command": "npm audit --audit-level=moderate",
             "description": "Scan for security vulnerabilities",
@@ -218,12 +169,6 @@
             "name": "🌍 Environment Setup",
             "command": "cp .env.example .env && npm install",
             "description": "Set up development environment",
-            "category": "setup"
-        },
-        {
-            "name": "🌍 Environment Switch",
-            "command": "export NODE_ENV=$1 && echo 'Environment set to $1'",
-            "description": "Switch between environments",
             "category": "setup"
         },
         {
@@ -243,23 +188,14 @@
             "command": "rg -n --type-add 'web:*.{html,js,ts,jsx,tsx,vue,svelte}' --type web '$1'",
             "description": "Search code with ripgrep",
             "category": "search"
-        },
-        {
-            "name": "🔍 Find Large Files",
-            "command": "find . -type f -size +10M -not -path './node_modules/*' -not -path './.git/*' | head -20",
-            "description": "Find large files in project",
-            "category": "search"
-        },
+        }
     ],
     "shortcuts": {
         "Ctrl+Shift+F": "🚀 Feature Development (SPARC)",
         "Ctrl+Shift+U": "🧪 TDD Unit Testing",
         "Ctrl+Shift+I": "🔗 Integration Testing",
-        "Ctrl+Shift+P": "🖥️ UI Testing (Puppeteer)",
         "Ctrl+Shift+A": "🏗️ System Architecture Design",
         "Ctrl+Shift+S": "🔒 Security Audit",
-        "Ctrl+Shift+D": "🚀 CI/CD Pipeline Setup",
-        "Ctrl+Shift+G": "🌳 Git Workflow Automation",
         "Ctrl+Shift+Q": "✨ Code Quality Check",
         "Ctrl+Shift+T": "🧪 Run Tests",
         "Ctrl+Shift+R": "🚀 Start Development Server",
@@ -277,59 +213,18 @@
         "workflow": "🔄 Workflow",
         "app": "🚀 Application",
         "quality": "✨ Code Quality",
-        "mcp": "🤖 MCP Operations",
         "git": "🐙 Git",
         "reports": "📊 Reports",
-        "monitoring": "📊 Monitoring",
         "cleanup": "🧹 Cleanup",
         "docker": "🐳 Docker",
-        "database": "🗄️ Database",
-        "performance": "📊 Performance",
         "setup": "🌍 Environment",
         "maintenance": "📦 Maintenance",
         "search": "🔍 Search"
     },
-    "mcp_usage_guide": {
-        "filesystem": "File operations, code analysis, bulk processing, automated fixes",
-        "sequential-thinking": "Complex problem solving, debugging, architecture decisions, multi-step planning",
-        "memory": "Persist project knowledge, user preferences, decisions, patterns",
-        "github": "Repository management, issues, PRs, code review, automated commits",
-        "neo4j-memory": "Knowledge graph operations, relationship mapping, component dependencies",
-        "puppeteer": "UI testing, browser automation, visual regression testing"
-    },
-    "workflow_patterns": {
-        "feature_development": [
-            "🏗️ System Architecture Design",
-            "🚀 Feature Development (SPARC)",
-            "🧪 TDD Unit Testing",
-            "🔗 Integration Testing",
-            "🔒 Security Audit"
-        ],
-        "quality_assurance": [
-            "🔍 Lint Code",
-            "🎨 Format Code",
-            "✨ Code Quality Check",
-            "🧪 Run Tests",
-            "📊 Generate Coverage Report"
-        ],
-        "deployment_pipeline": [
-            "🧪 Run Tests",
-            "🔒 Security Audit",
-            "🏗️ Build Project",
-            "🚀 CI/CD Pipeline Setup"
-        ]
-    },
-    "customization_guide": {
-        "add_commands": "Add project-specific commands to the commands array",
-        "update_shortcuts": "Modify keyboard shortcuts to match your preferences",
-        "extend_categories": "Add new categories for your project's needs",
-        "configure_mcp": "Update MCP configurations in .mcp.json",
-        "replace_placeholders": "Replace [YOUR_*_COMMAND] with actual commands"
-    },
     "notes": {
-        "prompts": "Professional prompts available in .claude/prompts/",
-        "mcp": "MCP servers provide enhanced capabilities - use them proactively!",
+        "prompts": "5 essential professional prompts in .claude/prompts/",
+        "hooks": "14 automated hooks provide enhanced productivity",
         "shortcuts": "Keyboard shortcuts work in Claude Code interface",
-        "customization": "This is a template - customize for your project needs"
+        "customization": "Commands are ready-to-use but can be customized per project"
     }
 }
